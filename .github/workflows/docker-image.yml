@@ -10,7 +10,6 @@ on:
 
 jobs:
   buildx-dockerhub:
-    if: github.repository == 'liyaojian/ddns-go'
     runs-on: ubuntu-latest
     env:
       DOCKER_REPO: ${{ secrets.DOCKER_USERNAME }}/ddns-go
@@ -24,7 +23,6 @@ jobs:
         with:
           images: |
             ${{ env.DOCKER_REPO }}
-            ghcr.io/${{ github.repository }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker buildx
